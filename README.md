@@ -30,6 +30,7 @@ It then exports a line chart (PV vs EV vs AC over time) as a PDF report.
 |---|---|
 | `evm_basic.py` | Reads project data from a CSV file (`data/sample_evm.csv`) |
 | `evm_interactive.py` | Prompts the user directly in the terminal for each period's data, with input validation |
+| `evm_multi_project.py` | Ingests a single CSV containing **multiple projects** (`data/multi_project.csv`), automatically calculates CPI/SPI/EAC for each one, flags at-risk projects, and exports a color-coded Excel dashboard |
 
 ## How to Run It
 
@@ -48,6 +49,14 @@ python evm_basic.py
 python evm_interactive.py
 ```
 You'll be asked how many reporting periods you have, then prompted for budgeted cost, % planned complete, % actually complete, and actual cost spent — for each period.
+
+**Multi-project portfolio dashboard:**
+```
+python evm_multi_project.py
+```
+Point it at a CSV containing multiple projects (each row tagged with a `project_id`), and it will calculate CPI/SPI/EAC for every project, sort them worst-performing first, and generate:
+- `portfolio_summary.csv` — the raw summary data
+- `portfolio_summary.xlsx` — a formatted Excel report with red/green health-status shading
 
 ## Example Output
 
